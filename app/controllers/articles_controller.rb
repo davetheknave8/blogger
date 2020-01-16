@@ -5,10 +5,14 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
+    @comment.article_id = @article.id
   end
 
   def new
     @article = Article.new
+    @comment = Comment.new
+    @comment.article_id = @article.id
   end
 
   def create
@@ -38,7 +42,7 @@ class ArticlesController < ApplicationController
     @article.update(helpers.article_params)
 
     flash.notice = "Article '#{@article.title}' has been updated!"
-    
+
     redirect_to article_path(@article)
   end
 end
