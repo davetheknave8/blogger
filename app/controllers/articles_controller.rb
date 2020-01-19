@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  include ArticlesHelper
+  
   def index
     @articles = Article.all
   end
@@ -16,6 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    byebug
     @article = Article.new(article_params)
     @article.save
 
